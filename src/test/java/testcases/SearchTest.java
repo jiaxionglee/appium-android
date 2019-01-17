@@ -1,3 +1,5 @@
+package testcases;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -5,10 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import pages.MainPage;
 import pages.SearchPage;
 
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**

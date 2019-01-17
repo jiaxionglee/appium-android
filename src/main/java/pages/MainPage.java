@@ -4,8 +4,6 @@ package pages;
 import drivers.Driver;
 import org.openqa.selenium.By;
 
-import javax.print.DocFlavor;
-
 /**
  * Created by jiaxiong on 2019-01-13 14:58
  */

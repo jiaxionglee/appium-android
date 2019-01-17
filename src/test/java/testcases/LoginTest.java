@@ -1,3 +1,4 @@
+package testcases;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
