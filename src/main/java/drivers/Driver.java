@@ -1,6 +1,6 @@
 package drivers;
 
-import io.appium.java_client.AppiumDriver;
+import config.GlobalConfig;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,26 +18,24 @@ public class Driver {
 
     public static void start() {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("platformName", "android");
-        desiredCapabilities.setCapability("deviceName", "dd");
-        desiredCapabilities.setCapability("appPackage", "com.xueqiu.android");
-        desiredCapabilities.setCapability("appActivity", ".view.WelcomeActivityAlias");
-        desiredCapabilities.setCapability("autoGrantPermissions", true);
-        desiredCapabilities.setCapability("noReset", true);
-        // desiredCapabilities.setCapability("automationName","UiAutomator2");
+        GlobalConfig config = GlobalConfig.load("/data/globalConfig.yaml");
+        config.appiumConfig.capabilities.keySet().forEach(key -> {
+            Object value = config.appiumConfig.capabilities.get(key);
+            desiredCapabilities.setCapability(key, value);
+        });
 
         URL remoteUrl = null;
         try {
-            remoteUrl = new URL("http://127.0.0.1:4723/wd/hub");
+            remoteUrl = new URL(config.appiumConfig.url);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
 
         driver = new AndroidDriver(remoteUrl, desiredCapabilities);
-        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(config.appiumConfig.wait, TimeUnit.SECONDS);
     }
 
-    public static AppiumDriver<WebElement> getCurrentDriver() {
+    public static AndroidDriver<WebElement> getCurrentDriver() {
         return driver;
     }
 }

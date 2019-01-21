@@ -12,6 +12,7 @@ import java.util.List;
 public class BasePage {
 
     static WebElement find(By locator) {
+        //todo 根据弹窗列表批量检索
         try {
             return Driver.getCurrentDriver().findElement(locator);
         }catch (Exception e){

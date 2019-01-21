@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
@@ -40,5 +41,14 @@ public class OptionalPage extends BasePage {
     public OptionalPage cancel() {
         find(By.id("action_close")).click();
         return this;
+    }
+
+    public ArrayList<String> getAll(){
+        ArrayList<String> array=new ArrayList<String>();
+        for(WebElement e: Driver.getCurrentDriver().findElements(By.id("stockName"))){
+            array.add(e.getText());
+        }
+        return array;
+
     }
 }

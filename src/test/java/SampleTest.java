@@ -28,8 +28,8 @@ public class SampleTest {
     @Before
     public void setUp() throws MalformedURLException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("appPackage", "com.example.android.apis");
-        desiredCapabilities.setCapability("appActivity", ".ApiDemos");
+        desiredCapabilities.setCapability("appPackage", "api.demos");
+        desiredCapabilities.setCapability("appActivity", "com.example.android.apis.ApiDemos");
         desiredCapabilities.setCapability("platformName", "android");
         desiredCapabilities.setCapability("deviceName", "emulator-5554");
         //desiredCapabilities.setCapability("avd", "Three");
@@ -57,6 +57,7 @@ public class SampleTest {
 
     @Test
     public void testSwipe() throws InterruptedException, IOException {
+        driver.findElementByXPath("//*[@text='Graphics']").click();
         Thread.sleep(3000);
         for(int i=0;i<10;i++) {
             swipe(0.8, 0.8, 0.4, 0.4);

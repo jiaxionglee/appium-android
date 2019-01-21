@@ -3,11 +3,15 @@ package testcases;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import pages.MainPage;
 import pages.SearchPage;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -35,10 +39,17 @@ public class SearchTest {
         assertThat(name, equalTo(expected));
     }
 
-    @Test
-    void choice() {
-        SearchPage result=searchPage.search("mi").addSelected();
+//    @Test
+//    void choice() {
+//        SearchPage result=searchPage.search("mi").addSelected();
 //        assertThat(result.getALl().get(0), hasItems("followed_bt", "follow_btn"));
 //        assertThat(result.getALl().get(0), equalTo("followed_bt"));
+//    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data//SearchTest.csv")
+    void choice1(String keyword){
+        ArrayList<String> arrayList = searchPage.search(keyword).addSelected();
+        assertThat(arrayList,hasItems("com.xueqiu.android:id/follow_btn","com.xueqiu.android:id/follow_btn"));
     }
 }
