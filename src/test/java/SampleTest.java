@@ -81,8 +81,8 @@ public class SampleTest {
 
     @Test
     public void testCall(){
-        driver.sendSMS("15600534760", "hello from seveniruby");
-        driver.makeGsmCall("15600534760", GsmCallActions.CALL);
+        driver.sendSMS("17010281698", "hello from seveniruby");
+        driver.makeGsmCall("17010281698", GsmCallActions.CALL);
     }
 
     public void swipe(Double startX, Double startY, Double endX, Double endY) throws InterruptedException {

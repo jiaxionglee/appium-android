@@ -33,7 +33,8 @@ public class MainPage extends BasePage {
      * 自选
      */
     public OptionalPage gotoOptional() {
-        find(By.id("tabs")).findElement(text("自选")).click();
+        //find(By.id("tabs")).findElement(text("自选")).click();
+        findUAT2("自选").click();
         return new OptionalPage();
     }
 }

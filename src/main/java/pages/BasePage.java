@@ -36,4 +36,8 @@ public class BasePage {
     static By text(String content) {
         return By.xpath("//*[@text='" + content + "']");
     }
+
+    static WebElement findUAT2(String content){
+        return Driver.getCurrentDriver().findElementByXPath("//*[@text='" + content + "']");
+    }
 }
